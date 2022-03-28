@@ -1,0 +1,67 @@
+
+    <form [formGroup]="formDetails" class="form-container">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Profile Information</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="full-width">
+                  <input formControlName="name" matInput placeholder="Name">
+                </mat-form-field>
+                <div *ngIf="isSubmit && f.name.errors">
+                    <mat-error *ngIf='f.name.errors.required'>Enter name</mat-error>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="full-width">
+                  <input type="email"  formControlName="email" matInput placeholder="Email">
+                </mat-form-field>
+                <div *ngIf="isSubmit && f.email.errors">
+                    <mat-error *ngIf='f.email.errors.required'>Enter valid Email</mat-error>
+                    <mat-error *ngIf="f.email.errors.email">Enter valid Email</mat-error>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-6">
+                <mat-form-field class="full-width">
+                  <input type="number" formControlName="contact" matInput placeholder="Contact No.">
+                </mat-form-field>
+                <div *ngIf="isSubmit && f.contact.errors">
+                    <mat-error *ngIf='f.contact.errors.required'>Enter Contact details</mat-error>
+                </div>
+              </div> 
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                  <mat-form-field class="full-width">
+                    <textarea  formControlName="address" matInput placeholder="Address"></textarea>
+                  </mat-form-field>
+                  <div *ngIf="isSubmit && f.address.errors">
+                    <mat-error *ngIf='f.address.errors.required'>Enter address details</mat-error>
+                </div>
+                </div> 
+              </div>
+            
+              <div class="row">
+                <div class="col-md-12">
+                     <mat-card-title>Course</mat-card-title>
+                    <mat-radio-group  formControlName="course" class="margin-left">
+                        <mat-radio-button value="C++"> C++ </mat-radio-button>
+                        <mat-radio-button value="JavaScript"> JavaScript </mat-radio-button>
+                        <mat-radio-button value="Java"> Java </mat-radio-button>
+                        <mat-radio-button value="Python"> Python </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button type="button" (click)="saveDetails()" mat-raised-button color="primary">Save</button>
+            <button type="reset" mat-raised-button color="primary">Reset</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
